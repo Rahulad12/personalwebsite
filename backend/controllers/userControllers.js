@@ -1,6 +1,7 @@
 const User = require("../models/User");
 const nodemailer = require("nodemailer");
 const PDFDocument = require("pdfkit");
+require("dotenv").config();
 
 const getallUser = async (req, res) => {
   try {
@@ -41,7 +42,7 @@ const sendContactEmail = async (req) => {
       service: "gmail",
       auth: {
         user: "st.rahul07@gmail.com",
-        pass: "tyam extl okse jmxu",
+        pass: process.env.NODEMAILER_PASSKEY,
       },
     });
 
