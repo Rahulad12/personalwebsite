@@ -12,7 +12,7 @@ import {
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { Provider } from "react-redux";
-import Store from "./store";
+import Store from "./Store";
 import HomeScreen from "../src/Screen/HomeScreen";
 import AboutScreen from "../src/Screen/AboutScreen";
 import ProjectScreen from "../src/Screen/ProjectScreen";
