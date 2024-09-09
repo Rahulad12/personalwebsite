@@ -1,0 +1,41 @@
+.project-container{
+  margin-top: 5rem;
+}
+.card_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .project-card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border: none;
+    overflow: hidden;
+    background-color: #f8f9fa; /* Light background */
+  }
+ 
+  
+  .project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .project-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .project-description {
+    color: #6c757d; /* Muted text color */
+  }
+  
+  .see-more-btn {
+    background-color: #007bff;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .see-more-btn:hover {
+    background-color: #0056b3;
+  }
+  

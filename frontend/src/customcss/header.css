@@ -1,0 +1,34 @@
+.navbar-custom {
+  background-color: #333;
+}
+
+.navbar-custom .navbar-brand {
+  font-size: 1.5rem;
+}
+
+.social-nav {
+  margin-left: auto;
+}
+
+.social-icons {
+  transition: transform 0.2s ease;
+}
+
+.social-icons:hover {
+  transform: scale(1.2);
+}
+
+.social-nav-small {
+  display: none;
+}
+
+@media Screen and (max-width: 991px) {
+
+  .social-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: .5rem;
+    /* border: 2px solid rgb(0, 255, 17); */
+  }
+}

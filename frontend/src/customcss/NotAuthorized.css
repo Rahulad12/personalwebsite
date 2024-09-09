@@ -1,0 +1,28 @@
+.not-authorized-container {
+    margin-top: 10rem;
+    color: #333;
+  }
+  
+  .lock-icon {
+    font-size: 5rem;
+    color: #dc3545; /* Bootstrap danger color */
+  }
+  
+  h1 {
+    color: #dc3545; /* Bootstrap danger color */
+  }
+  
+  h2 {
+    color: #6c757d; /* Bootstrap secondary color */
+  }
+  
+  p.lead {
+    color: #495057; /* Bootstrap dark color */
+  }
+  
+  .icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
