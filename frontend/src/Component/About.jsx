@@ -1,5 +1,6 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { Container, Row, Col, Button } from "react-bootstrap";
 
 const About = () => {
   return (
@@ -23,8 +24,9 @@ const About = () => {
               utilizing the MERN Stack. My front-end development experience
               includes contributions to the <strong>Nejra EMR</strong> record
               system and <strong>Shop.Nep</strong>, another e-commerce platform.
+            <Link to="/about" className="nav-link text-primary"> See more...</Link>
             </p>
-            <p className="text-justify fs-5 mb-4">
+            {/* <p className="text-justify fs-5 mb-4">
               My technical skills include proficiency in HTML, CSS, JavaScript,
               React, and the MERN Stack. I've also honed my data science skills
               with tools like NumPy, Matplotlib, and pandas. In addition to my
@@ -52,7 +54,7 @@ const About = () => {
                 GitHub profile
               </a>
               .
-            </p>
+            </p> */}
           </Col>
         </Row>
       </Container>
