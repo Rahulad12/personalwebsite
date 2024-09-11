@@ -9,12 +9,7 @@ const About = () => {
         <Row className="align-items-center">
           <Col md={12}>
             <p className="text-justify fs-5 mb-4">
-              Hello! I'm <strong>Rahul Adhikari</strong>, a passionate computer
-              science student currently pursuing my Bachelor's degree in
-              Computer Science and Information Technology at Academia
-              International College. My journey in the tech world has been both
-              exciting and rewarding, equipping me with a diverse set of skills
-              ranging from web development to data science.
+            Hi, I'm <strong>Rahul Adhikari</strong>, a passionate student of computer science, currently pursuing my Bachelor's degree. I've had the opportunity to immerse myself in various areas of tech, developing skills in both web development and data science.
             </p>
             <p className="text-justify fs-5 mb-4">
               Over the years, I've successfully completed various projects that

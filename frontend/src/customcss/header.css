@@ -18,9 +18,7 @@
   transform: scale(1.2);
 }
 
-.social-nav-small {
-  display: none;
-}
+
 
 @media Screen and (max-width: 991px) {
 
