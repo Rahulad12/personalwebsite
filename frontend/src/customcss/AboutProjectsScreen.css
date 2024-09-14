@@ -1,0 +1,91 @@
+.about-projects-screen {
+    padding: 2rem;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+  }
+  
+  .about-projects-screen .project-container {
+    margin-top: 5rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .about-projects-screen .project-card {
+    padding: 2rem;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .about-projects-screen .project-title {
+    font-size: 2rem;
+    color: #343a40;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .about-projects-screen .project-title:hover {
+    color: #007bff;
+  }
+  
+  .about-projects-screen .project-description {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    color: #495057;
+  }
+  
+  .about-projects-screen .project-details {
+    margin-top: 1.5rem;
+    font-size: 1rem;
+    color: #495057;
+  }
+  
+  .about-projects-screen .project-status-row {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+  }
+  
+ .about-projects-screen .status-badge {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    border-radius: 50px;
+    font-weight: bold;
+  }
+  
+  .about-projects-screen .status-badge.completed {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .about-projects-screen .status-badge.inprogress {
+    background-color: #ffc107;
+    color: white;
+  }
+  
+  .about-projects-screen .project-github {
+    text-align: right;
+  }
+  
+  .about-projects-screen .github-button {
+    padding: 0.5rem 1rem;
+    background-color: #24292e;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .about-projects-screen .github-button:hover {
+    background-color: #444d56;
+  }
+  
+  .about-projects-screen .github-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  
+  .about-projects-screen .github-link:hover {
+    text-decoration: underline;
+  }
+  

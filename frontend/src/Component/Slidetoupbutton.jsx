@@ -3,8 +3,7 @@ import { BsArrowUpSquareFill } from "react-icons/bs";
 import { useState, useEffect } from "react";
 
 const style = {
-  color: "green",
-  borderradius: "50%",
+  color: "orange ",
   fontSize: "50px",
   position: "fixed",
   bottom: "20px",
@@ -38,7 +37,7 @@ const Slidetoupbutton = () => {
     <div className="scroll-to-top">
       {visible && (
         <div style={style} onClick={scrollToTop}>
-          <BsArrowUpSquareFill />
+          <BsArrowUpSquareFill className="rounded-circle"/>
         </div>
       )}
     </div>

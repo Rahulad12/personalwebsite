@@ -29,7 +29,7 @@ app.use(express.urlencoded({ extended: true }));
 // const corsOptions = {
 //   origin:
 //     process.env.NODE_ENV === "production"
-//       ? "https://coderahul.onrender.com/" // Your production domain
+//       ? "https://coderahul.vercel.app/" // Your production domain
 //       : "http://localhost:5173", // Local development
 //   methods: ["GET", "POST", "PUT", "DELETE"],
 //   credentials: true,

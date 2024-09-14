@@ -43,7 +43,7 @@ const Contact = () => {
 
   return (
     <Container className="contact-container my-5">
-      <h2 className="text-center my-4">Get in Touch</h2>
+      <h2 className="text-center">Get in Touch</h2>
       {isLoading ? (
         <Loader />
       ) : (
@@ -110,7 +110,8 @@ const Contact = () => {
                 <strong>Tell Me More About Your Project:</strong>
               </Form.Label>
               <Form.Control
-                type="text"
+                as="textarea"
+                rows={2}
                 placeholder="Enter your project requirements"
                 value={hire}
                 onChange={(e) => setHire(e.target.value)}

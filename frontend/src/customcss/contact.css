@@ -1,43 +1,79 @@
-.contact-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f8f9fa; /* Light background color */
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+.contact-screen {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.contact-screen .description-animation {
+  animation: slide 4s ease-in-out infinite alternate;
+  color: #343a40;
+  max-width: 80%;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
   }
-  
-  .contact-form {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
+  100% {
+    transform: translateX(10px);
   }
-  
-  .contact-form .form-control {
-    border-radius: 8px;
-    box-shadow: none;
+}
+
+.contact-screen .service-section {
+  margin-top: 2rem;
+}
+
+.contact-screen .service-info,
+.contact-screen .stack-info,
+.contact-screen .contact-info {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  border-left: 4px solid #007bff;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-screen .service-info h3,
+.contact-screen .stack-info h3,
+.contact-screen .contact-info h3 {
+  font-size: 1.5rem;
+  color: #007bff;
+}
+
+ul.list-unstyled {
+  padding-left: 1rem;
+}
+
+.contact-info a {
+  text-decoration: none;
+  color: #495057;
+  font-weight: 500;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+.contact-info p {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.contact-info svg {
+  margin-right: 10px;
+}
+
+.contact-info a:hover {
+  color: #007bff;
+}
+
+@media (max-width: 768px) {
+  .description-animation {
+    font-size: 1.2rem;
   }
-  
-  .contact-form .btn {
-    background-color: #28a745;
-    border: none;
-    border-radius: 8px;
-    font-weight: bold;
+  .service-section {
+    margin-top: 1rem;
   }
-  
-  .contact-form .btn:hover {
-    background-color: #218838;
-  }
-  
-  .contact-form h2 {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  
-  .contact-form .form-label {
-    font-size: 1rem;
-    font-weight: bold;
-    color: #333;
-  }
-  
+}

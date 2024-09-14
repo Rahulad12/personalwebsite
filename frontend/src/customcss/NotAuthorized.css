@@ -3,24 +3,24 @@
     color: #333;
   }
   
-  .lock-icon {
+  .not-authorized-container .lock-icon {
     font-size: 5rem;
     color: #dc3545; /* Bootstrap danger color */
   }
   
-  h1 {
+  .not-authorized-container h1 {
     color: #dc3545; /* Bootstrap danger color */
   }
   
-  h2 {
+  .not-authorized-container h2 {
     color: #6c757d; /* Bootstrap secondary color */
   }
   
-  p.lead {
+  .not-authorized-container p.lead {
     color: #495057; /* Bootstrap dark color */
   }
   
-  .icon-container {
+  .not-authorized-container .icon-container {
     display: flex;
     justify-content: center;
     align-items: center;

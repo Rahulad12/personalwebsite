@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Loader from "../Component/Loader";
-import { Container, Card, Alert, Button } from "react-bootstrap";
+import { Container, Card, Alert, Button, Row, Col } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import { useGetProjectByIdQuery } from "../slices/systemApiSlices";
 import { FaGithub } from "react-icons/fa";
+import "../customcss/AboutProjectsScreen.css" // Assuming you add a CSS file here
 
 const AboutProjectsScreen = () => {
   const { id } = useParams();
@@ -19,6 +20,7 @@ const AboutProjectsScreen = () => {
   }, [project]);
 
   const formatDate = (dateStr) => {
+    if (!dateStr) return "Not Specified";
     const dateObj = new Date(dateStr);
     const options = {
       year: "numeric",
@@ -28,20 +30,18 @@ const AboutProjectsScreen = () => {
     return dateObj.toLocaleDateString("en-US", options);
   };
 
-  const projectStatus = project?.status ? "Completed" : "In Progress";
-  const projectEndDate = project?.endDate ? formatDate(project.endDate) : "Not Specified";
+  const projectStatus = project?.status ? "Completed" : "Inprogress";
 
   return (
-    <div>
+    <div className="about-projects-screen">
       {isLoading ? (
         <Loader />
       ) : error ? (
-        <>
-          {setFeedback("An error occurred while fetching the project.")}
-          {setFeedbackType("danger")}
-        </>
+        <Alert variant="danger" className="my-3">
+          An error occurred while fetching the project. Please try again later.
+        </Alert>
       ) : (
-        <Container className="card_container">
+        <Container className="project-container">
           {feedback && (
             <Alert
               variant={feedbackType}
@@ -53,50 +53,60 @@ const AboutProjectsScreen = () => {
             </Alert>
           )}
           {project && (
-            <Card className="my-3 p-3 rounded card">
+            <Card className="project-card">
               <Card.Body>
                 <Link
                   to={`/project/${project._id}`}
-                  className="text-dark fs-4"
-                  style={{ textDecoration: "none" }}
+                  className="text-dark project-title"
                 >
                   <Card.Title as="div">
                     <strong>{project.title}</strong>
                   </Card.Title>
                 </Link>
-                <Card.Text as="div">
-                  <div className="my-3">{project.description}</div>
+
+                <Card.Text as="div" className="project-description">
+                  {project.description || "No description available."}
                 </Card.Text>
-                <Card.Text as="div">
-                  <div className="my-3">
-                    <strong>Start Date: </strong>
-                    {formatDate(project.startDate)}
-                  </div>
-                </Card.Text>
-                <Card.Text as="div">
-                  <div className="my-3">
-                    <strong>End Date: </strong>
-                    {projectEndDate}
-                  </div>
-                </Card.Text>
-                <Card.Text as="div">
-                  <div className="my-3">
-                    <strong>Status: </strong>
-                    {projectStatus}
-                  </div>
-                </Card.Text>
-                <Card.Text as="div">
-                  <Button variant="dark" className="my-3">
-                    <Link
-                      to={project.link}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="text-white"
-                    >
-                      <FaGithub />
-                    </Link>
-                  </Button>
-                </Card.Text>
+
+                <Row className="project-details">
+                  <Col md={6}>
+                    <Card.Text as="div">
+                      <strong>Start Date: </strong>
+                      {formatDate(project.startDate)}
+                    </Card.Text>
+                  </Col>
+                  <Col md={6}>
+                    <Card.Text as="div">
+                      <strong>End Date: </strong>
+                      {formatDate(project.endDate)}
+                    </Card.Text>
+                  </Col>
+                </Row>
+
+                <Row className="project-status-row">
+                  <Col md={6}>
+                    <Card.Text as="div">
+                      <strong>Status: </strong>
+                      <span className={`status-badge ${projectStatus.toLowerCase()}`}>
+                        {projectStatus}
+                      </span>
+                    </Card.Text>
+                  </Col>
+                  <Col md={6} className="project-github">
+                    {project.link && (
+                      <Button variant="dark" className="my-2 github-button">
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-white github-link"
+                        >
+                          <FaGithub className="me-2" /> View on GitHub
+                        </a>
+                      </Button>
+                    )}
+                  </Col>
+                </Row>
               </Card.Body>
             </Card>
           )}
