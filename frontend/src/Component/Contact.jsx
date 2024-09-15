@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Form, Button, Alert, Container } from "react-bootstrap";
+import { Form, Button, Alert, Container,Modal } from "react-bootstrap";
 import Loader from "./Loader";
 import "../customcss/contact.css";
 
@@ -12,6 +12,8 @@ const Contact = () => {
   const [hire, setHire] = useState("");
   const [feedback, setFeedback] = useState("");
   const [feedbackType, setFeedbackType] = useState("");
+  const [modal, showModal] = useState(false);
+  const [Sendername, setSendername] = useState("");
 
   const [sendContact, { isLoading, isError, refetch }] =
     useSendContactMutation();
@@ -23,14 +25,14 @@ const Contact = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
+      setSendername(name);
       const { data } = await sendContact({
         name,
         email,
         message,
         hire,
       });
-      setFeedback("Message sent successfully.");
-      setFeedbackType("success");
+      showModal(true);
       setName("");
       setEmail("");
       setMessage("");
@@ -40,6 +42,20 @@ const Contact = () => {
       setFeedbackType("danger");
     }
   };
+
+  //getting day greet
+  const date = new Date();
+  const hours = date.getHours();
+  var greet;
+  if (hours < 12) {
+    greet = "Good Morning";
+  } else if (hours < 18) {
+    greet = "Good Afternoon";
+  } else {
+    greet = "Good Evening";
+  }
+  
+
 
   return (
     <Container className="contact-container my-5">
@@ -129,6 +145,23 @@ const Contact = () => {
               <strong>Note:</strong> Your message will be sent to the my email
             </small>
           </Form>
+
+          <Modal show={modal} onHide={() => showModal(false)} centered>
+            <Modal.Header closeButton>
+              <Modal.Title>Message Sent</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <p>
+                {greet} <b>{Sendername}</b> Thank you for reaching out to me. I'll get back to you as soon
+                as possible.
+              </p>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={() => showModal(false)}>
+                Close
+              </Button>
+            </Modal.Footer>
+          </Modal>
         </>
       )}
     </Container>

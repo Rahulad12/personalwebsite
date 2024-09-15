@@ -80,7 +80,7 @@ const sendContactEmail = async (req) => {
 const createUserAndSendEmail = async (req, res) => {
   try {
     const user = await createUser(req);
-    await sendContactEmail(req);
+    // await sendContactEmail(req);
 
     res
       .status(201)

@@ -1,9 +1,10 @@
 import React from "react";
 import Contact from "../Component/Contact";
 import { Container, Row, Col } from "react-bootstrap";
-import { MdOutlineEmail } from "react-icons/md";
+import { MdGroupRemove, MdOutlineEmail } from "react-icons/md";
 import { FaPhoneAlt } from "react-icons/fa";
 import "../customcss/contact.css"; // Importing the custom CSS
+import { current } from "@reduxjs/toolkit";
 
 const ContactScreen = () => {
   return (
