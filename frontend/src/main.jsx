@@ -19,6 +19,7 @@ import ProjectScreen from "../src/Screen/ProjectScreen";
 import ContactScreen from "../src/Screen/ContactScreen";
 import AboutProjectsScreen from "./Screen/AboutProjectsScreen";
 import Achievement from "./Component/Achievement";
+import BlogScreen from "./Screen/BlogScreen.jsx";
 
 import AdminRoute from "./Component/Admin/AdminRoute.jsx";
 import LoginScreen from "./Screen/LoginScreen.jsx";
@@ -37,6 +38,7 @@ const router = createBrowserRouter(
       <Route path="/project/:id" element={<AboutProjectsScreen />} />
       <Route path="/contact" element={<ContactScreen />} />
       <Route path="/achievments" element={<Achievement />} />
+      <Route path="/blog" element={<BlogScreen />} />
 
       <Route path="/login" element={<LoginScreen />} />
       {/* //admin route  */}

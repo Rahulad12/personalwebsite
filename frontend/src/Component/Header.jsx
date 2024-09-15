@@ -47,6 +47,9 @@ const Header = () => {
               <Nav.Link as={Link} to="/contact" className="fw-bold">
                 Contact
               </Nav.Link>
+              <Nav.Link as={Link} to="/blog" className="fw-bold">
+                Blog
+              </Nav.Link>
 
               {userInfo && (
                 <NavDropdown
