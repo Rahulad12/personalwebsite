@@ -8,9 +8,9 @@ const Coverpage = () => {
   // const navigate = useNavigate();
   return (
     <>
-      <Container fluid style={{marginTop:"3rem"}}>
+      <div style={{marginTop:"3rem"}}>
        <ImageCarouselComponent altText={"Coverpage"} />
-      </Container>
+      </div>
     </>
   );
 };

@@ -5,7 +5,7 @@ import { Image } from "react-bootstrap";
 const ImageCarouselComponent = ({ altText }) => {
   return (
     <div>
-      <Image src="/image/1.png" alt={altText} style={{width:"100%"}}/>
+      <Image src="/image/2.png" alt={altText} style={{width:"100%"}}/>
     </div>
   );
 };
