@@ -15,7 +15,7 @@ const createExperience = async (req, res) => {
         location: req.body.location,
         role: req.body.role,
         startDate: req.body.startDate,
-        endDate: req.body.endDate,
+        endDate: req.body.endDate || null,
         description: req.body.description,
         status: req.body.status,
     });

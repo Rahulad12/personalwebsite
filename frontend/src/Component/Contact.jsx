@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { Form, Button, Alert, Container,Modal } from "react-bootstrap";
+import { Form, Button, Alert, Container, Modal } from "react-bootstrap";
 import Loader from "./Loader";
 import "../customcss/contact.css";
-
 import { useSendContactMutation } from "../slices/systemApiSlices";
 
 const Contact = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [hire, setHire] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+    hire: "",
+  });
   const [feedback, setFeedback] = useState("");
   const [feedbackType, setFeedbackType] = useState("");
   const [modal, showModal] = useState(false);
   const [Sendername, setSendername] = useState("");
 
-  const [sendContact, { isLoading, isError, refetch }] =
-    useSendContactMutation();
+  const [sendContact, { isLoading, isError }] = useSendContactMutation();
 
   useEffect(() => {
     document.title = "Contact | Portfolio";
@@ -25,37 +25,27 @@ const Contact = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      setSendername(name);
-      const { data } = await sendContact({
-        name,
-        email,
-        message,
-        hire,
-      });
+      setSendername(formData.name);
+      const { data } = await sendContact(formData);
       showModal(true);
-      setName("");
-      setEmail("");
-      setMessage("");
-      setHire("");
+      setFormData({ name: "", email: "", message: "", hire: "" });
     } catch (error) {
-      setFeedback(error.response.data.message);
+      setFeedback(error.response?.data?.message || "Error sending message.");
       setFeedbackType("danger");
     }
   };
 
-  //getting day greet
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
   const date = new Date();
   const hours = date.getHours();
-  var greet;
-  if (hours < 12) {
-    greet = "Good Morning";
-  } else if (hours < 18) {
-    greet = "Good Afternoon";
-  } else {
-    greet = "Good Evening";
-  }
-  
-
+  const greet = hours < 12 ? "Good Morning" : hours < 18 ? "Good Afternoon" : "Good Evening";
 
   return (
     <Container className="contact-container my-5">
@@ -78,35 +68,24 @@ const Contact = () => {
             className="contact-form p-4 shadow-lg rounded"
             onSubmit={submitHandler}
           >
-            <Form.Group controlId="formBasicName" className="my-3">
-              <Form.Label>
-                <strong>Name:</strong>
-              </Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter your name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-              />
-            </Form.Group>
-
-            <Form.Group controlId="formBasicEmail" className="my-3">
-              <Form.Label>
-                <strong>Email address:</strong>
-              </Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-              <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
-              </Form.Text>
-            </Form.Group>
-
+            <FormInput
+              label="Name"
+              type="text"
+              placeholder="Enter your name"
+              value={formData.name}
+              name="name"
+              onChange={handleChange}
+              required
+            />
+            <FormInput
+              label="Email address"
+              type="email"
+              placeholder="Enter your email"
+              value={formData.email}
+              name="email"
+              onChange={handleChange}
+              required
+            />
             <Form.Group controlId="formBasicMessage" className="my-3">
               <Form.Label>
                 <strong>Message:</strong>
@@ -115,12 +94,12 @@ const Contact = () => {
                 as="textarea"
                 rows={4}
                 placeholder="Enter your message"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
+                value={formData.message}
+                name="message"
+                onChange={handleChange}
                 required
               />
             </Form.Group>
-
             <Form.Group controlId="formBasicHire" className="my-3">
               <Form.Label>
                 <strong>Tell Me More About Your Project:</strong>
@@ -129,20 +108,16 @@ const Contact = () => {
                 as="textarea"
                 rows={2}
                 placeholder="Enter your project requirements"
-                value={hire}
-                onChange={(e) => setHire(e.target.value)}
+                value={formData.hire}
+                name="hire"
+                onChange={handleChange}
               />
-              <Form.Text className="text-muted">
-                I'll get back to you as soon as possible.
-              </Form.Text>
             </Form.Group>
-
             <Button type="submit" className="btn btn-primary w-100 mt-4">
               Submit
             </Button>
-
             <small className="text-muted">
-              <strong>Note:</strong> Your message will be sent to the my email
+              <strong>Note:</strong> Your message will be sent to my email.
             </small>
           </Form>
 
@@ -152,7 +127,7 @@ const Contact = () => {
             </Modal.Header>
             <Modal.Body>
               <p>
-                {greet} <b>{Sendername}</b> Thank you for reaching out to me. I'll get back to you as soon
+                {greet} <b>{Sendername}</b>, thank you for reaching out to me. I'll get back to you as soon
                 as possible.
               </p>
             </Modal.Body>
@@ -167,5 +142,21 @@ const Contact = () => {
     </Container>
   );
 };
+
+const FormInput = ({ label, type, placeholder, value, name, onChange, required }) => (
+  <Form.Group controlId={`formBasic${label}`} className="my-3">
+    <Form.Label>
+      <strong>{label}:</strong>
+    </Form.Label>
+    <Form.Control
+      type={type}
+      placeholder={placeholder}
+      value={value}
+      name={name}
+      onChange={onChange}
+      required={required}
+    />
+  </Form.Group>
+);
 
 export default Contact;

@@ -1,38 +1,28 @@
 .achievement-section {
-    background-color: #f7f9fc; /* Light background for the section */
-    padding: 20px 0;
-  }
-  
-  .section-title {
-    font-size: 1.8rem;
-    color: #333;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .achievement-col, .certificate-col {
-    margin-bottom: 30px;
-  }
-  
-  .achievement-card, .certificate-card {
-    border: none;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .achievement-card:hover, .certificate-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15);
-  }
-  
-  .achievement-description, .certificate-description {
-    font-size: 1rem;
-    color: #555;
-  }
-  
-  .achievement-date, .certificate-date {
-    font-size: 0.9rem;
-    color: #777;
-    margin-top: 10px;
-  }
-  
+  background-color: #f9f9f9;
+  padding: 2rem 0;
+}
+
+.section-title {
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 10px;
+}
+
+.achievement-card, .certificate-card {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.achievement-card:hover, .certificate-card:hover {
+  transform: translateY(-5px);
+}
+
+.achievement-description, .certificate-description {
+  color: #6c757d;
+}
+
+.achievement-date, .certificate-date {
+  font-size: 0.9rem;
+  color: #888;
+}

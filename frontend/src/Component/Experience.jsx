@@ -41,7 +41,7 @@ const Experience = () => {
                       <h6>{exp.location}</h6>
                       <p>{exp.role}</p>
                       <p>
-                        {exp.startDate} - {exp.endDate}
+                        {exp.startDate} - {exp.endDate === null ? "Currently Working" : exp.endDate}
                       </p>
                       <p>{exp.description}</p>
                     </li>

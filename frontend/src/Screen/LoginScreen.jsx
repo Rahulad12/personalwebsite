@@ -4,13 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { Form, Button, Container, Alert } from "react-bootstrap";
 import { useAdminLoginMutation } from "../slices/systemApiSlices";
 import Loader from "../Component/Loader";
-import {toast} from 'react-toastify';
+import { toast } from "react-toastify";
 import { setCredentials } from "../slices/authSlices";
 
 const LoginScreen = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [feedback, setFeedback] = useState("");
+  const [showpassword, setShowPassword] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -36,14 +37,13 @@ const LoginScreen = () => {
       toast.success("Logged In Successfully");
       navigate("/");
     } catch (error) {
-      setFeedback("Invalid Credentials"+ error);
-      
+      setFeedback("Invalid Credentials" + error);
     }
   };
 
   return (
     <>
-      <Container style={{marginTop:"5rem"}}>
+      <Container style={{ marginTop: "5rem" }}>
         {feedback && (
           <Alert variant="danger" dismissible onClose={() => setFeedback("")}>
             {feedback}
@@ -64,15 +64,22 @@ const LoginScreen = () => {
           <Form.Group controlId="password">
             <Form.Label>Password</Form.Label>
             <Form.Control
-              type="password"
+              type= {showpassword ? "text" : "password"}
               placeholder="Enter password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             ></Form.Control>
           </Form.Group>
+          <Form.Group controlId="showpassword" className="my-3">
+            <Form.Check
+              type="checkbox"
+              label="Show Password"
+              onClick={() => setShowPassword(!showpassword)}
+            />
+          </Form.Group>
 
           <Button type="submit" variant="primary" className="my-3">
-            Login In
+            Login In  
           </Button>
         </Form>
         {isLoading && <Loader />}

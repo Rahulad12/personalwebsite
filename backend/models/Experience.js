@@ -21,10 +21,10 @@ const ExperienceSchema = new mongoose.Schema({
     startDate: {
         type: String,
         required: true,
+        default: Date.now,
     },
     endDate: {
         type: String,
-        required: true,
     },
     description: {
         type: String,

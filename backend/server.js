@@ -24,17 +24,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Set up CORS options
-
-// const corsOptions = {
-//   origin:
-//     process.env.NODE_ENV === "production"
-//       ? "https://coderahul.vercel.app/" // Your production domain
-//       : "http://localhost:5173", // Local development
-//   methods: ["GET", "POST", "PUT", "DELETE"],
-//   credentials: true,
-// };
-// app.use(cors(corsOptions));
 
 // Define routes
 app.use("/api/admin", adminRoutes);
