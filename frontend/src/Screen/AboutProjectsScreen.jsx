@@ -4,7 +4,7 @@ import { Container, Card, Alert, Button, Row, Col } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import { useGetProjectByIdQuery } from "../slices/systemApiSlices";
 import { FaGithub } from "react-icons/fa";
-import "../customcss/AboutProjectsScreen.css" // Assuming you add a CSS file here
+import "../customcss/AboutProjectsScreen.css"; // Assuming you add a CSS file here
 
 const AboutProjectsScreen = () => {
   const { id } = useParams();
@@ -87,7 +87,9 @@ const AboutProjectsScreen = () => {
                   <Col md={6}>
                     <Card.Text as="div">
                       <strong>Status: </strong>
-                      <span className={`status-badge ${projectStatus.toLowerCase()}`}>
+                      <span
+                        className={`status-badge ${projectStatus.toLowerCase()}`}
+                      >
                         {projectStatus}
                       </span>
                     </Card.Text>

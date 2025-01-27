@@ -5,9 +5,17 @@ import About from "../Component/About";
 import Skill from "../Component/Skill";
 import Experience from "../Component/Experience";
 import "../customcss/homescreen.css"; // Import the custom CSS
+import { useGetProjectByIdQuery } from "../slices/systemApiSlices";
 
 const HomeScreen = () => {
   document.title = "Home | Portfolio";
+  const { data: project, isLoading, error } = useGetProjectByIdQuery();
+
+  const getLatestThreeProjects = () => {
+    if (project && project.length > 0) {
+      return project.slice(0, 3);
+    }
+  };
   return (
     <div>
       <Coverpage />

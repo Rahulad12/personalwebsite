@@ -42,9 +42,9 @@ const getProjectById = async (req, res) => {
 
 const updateProject = async (req, res) => {
   try {
-    const { title, description, image, startDate, endDate } = req.body;
+    const { title, description, image, startDate, endDate, link } = req.body;
     const project = await Project.findById(req.params.id);
-
+    console.log(project);
     if (project) {
       project.title = title || project.title;
       project.description = description || project.description;
