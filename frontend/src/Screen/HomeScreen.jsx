@@ -4,18 +4,21 @@ import Coverpage from "../Component/Coverpage";
 import About from "../Component/About";
 import Skill from "../Component/Skill";
 import Experience from "../Component/Experience";
+import Project from "../Component/Project";
 import "../customcss/homescreen.css"; // Import the custom CSS
-import { useGetProjectByIdQuery } from "../slices/systemApiSlices";
+import { useGetProjectQuery } from "../slices/systemApiSlices";
 
 const HomeScreen = () => {
   document.title = "Home | Portfolio";
-  const { data: project, isLoading, error } = useGetProjectByIdQuery();
 
-  const getLatestThreeProjects = () => {
-    if (project && project.length > 0) {
-      return project.slice(0, 3);
-    }
-  };
+  const { data: project, isLoading, error } = useGetProjectQuery();
+  console.log("all project", project);
+  const sortedProjectsbyDate = project
+    ? [...project].sort((a, b) => {
+        return new Date(b.createdAt) - new Date(a.createdAt);
+      })
+    : [];
+  console.log("sorted project", sortedProjectsbyDate);
   return (
     <div>
       <Coverpage />
@@ -34,6 +37,17 @@ const HomeScreen = () => {
             <strong>Skills</strong>
           </h2>
           <Skill />
+        </div>
+        {/*projects section */}
+        <div className="project_section section-wrapper">
+          <h2 className="section-title">
+            <strong>Projects</strong>
+          </h2>
+          <div className="d-flex justify-content-between">
+            {sortedProjectsbyDate?.map((projects, key) => (
+              <Project projects={projects} key={key} />
+            ))}
+          </div>
         </div>
 
         {/* Service Section */}

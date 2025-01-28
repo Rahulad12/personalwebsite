@@ -1,19 +1,15 @@
 const Admin = require("../models/Admin");
 const jwt = require("jsonwebtoken");
 
-const createAdmin = (req, res) => {
+const createAdmin = async (req, res) => {
   const { userName, password } = req.body;
-
-  const admin = new Admin({ userName, password });
-
-  admin
-    .save()
-    .then(() => {
-      res.json({ message: "Admin Created Successfully" });
-    })
-    .catch((err) => {
-      res.status(500).json({ message: "Server Error" });
-    });
+  try {
+    const admin = new Admin({ userName, password });
+    await admin.save();
+    res.status(201).json({ message: "Admin created", success: true, admin });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
 
 const Login = async (req, res) => {

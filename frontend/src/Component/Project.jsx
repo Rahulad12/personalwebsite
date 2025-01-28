@@ -2,10 +2,10 @@ import { Container, Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../customcss/project.css";
 
-const Project = ({ projects }) => {
+const Project = ({ projects, key }) => {
   return (
     <Container className="card_container ">
-      <Card className="my-3 p-3 rounded project-card">
+      <Card className="my-3 p-3 rounded project-card" key={key}>
         <Card.Body>
           <Link
             to={`/project/${projects._id}`}

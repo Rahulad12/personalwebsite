@@ -3,8 +3,8 @@ const Achievement = require("../models/Achievement");
 const Certificate = require("../models/Certificate");
 
 const getallAchivement = async (req, res) => {
-  const achivements = await Achievement.find({});
   try {
+    const achivements = await Achievement.find({});
     res.send(achivements);
   } catch (e) {
     res.send(`Error ${e}`);
@@ -12,12 +12,10 @@ const getallAchivement = async (req, res) => {
 };
 
 const createAchivement = async (req, res) => {
+  const { title, description, date } = req.body;
   try {
-    const { title, description, date } = req.body;
 
     const achivement = new Achievement({ title, description, date});
-    console.log(achivement);
-
     const a1 = await achivement.save();
     res.status(201).json(a1);
   } catch (e) {
@@ -35,8 +33,8 @@ const getCertification = async (req, res) => {
 };
 
 const createCertification = async (req, res) => {
+  const { title, description, date} = req.body;
   try {
-    const { title, description, date} = req.body;
 
     const certifications = new Certificate({ title, description, date});
 

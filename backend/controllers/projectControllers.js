@@ -4,8 +4,8 @@ const getProjects = async (req, res) => {
   try {
     const projects = await Project.find();
     res.status(200).json(projects);
-  } catch (err) {
-    throw new Error(`Error: ${err.message} || Projects not found`);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
 };
 
@@ -26,8 +26,8 @@ const createProject = async (req, res) => {
 
     const createdProject = await project.save();
     res.status(201).json(createdProject);
-  } catch (err) {
-    throw new Error(` ${err.message} || Project not created`);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
 };
 
@@ -35,8 +35,8 @@ const getProjectById = async (req, res) => {
   try {
     const project = await Project.findById(req.params.id);
     res.status(200).json(project);
-  } catch (err) {
-    throw new Error(`Error: ${err.message} || Project not found`);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
 };
 
@@ -58,8 +58,8 @@ const updateProject = async (req, res) => {
     } else {
       res.status(404).json({ message: "Project not found" });
     }
-  } catch (err) {
-    throw new Error(`Error: ${err.message} || Project not updated`);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
 };
 
@@ -73,8 +73,8 @@ const deleteProject = async (req, res) => {
     } else {
       res.status(404).json({ message: "Project not found" });
     }
-  } catch (err) {
-    throw new Error(`Error: ${err.message} || Project not deleted`);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
 };
 
